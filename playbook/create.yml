@@ -1,0 +1,21 @@
+- name: Creating Virtual Servers
+  hosts: all
+  gather_facts: no
+  tasks:
+  - name: Build instance request
+    sl_vm:
+      hostname: "{{ inventory_hostname }}"
+      domain: icp.local
+      datacenter: sao01
+      tags: icp demo
+      hourly: yes
+      private: no
+      dedicated: no
+      local_disk: yes
+      cpus: 4
+      memory: 12288
+      disks: [100]
+      image_id: 25f9d33e-0bc9-4c82-8793-cd626659753f
+      wait: no
+    delegate_to: localhost
+
