@@ -38,11 +38,11 @@ file = open("/opt/ibm-cloud-private-ce-2.1.0.3/cluster/hosts", "w")
 file.write("")
 file.close()
 
-file = open("/root/criar_ambiente_icp/inventory", "w")
+file = open("/root/create_icp_2103/inventory", "w")
 file.write("[minicloud]\n")
 file.write( hostname + " ansible_ssh_host=" + ip + "\n")
 file.close()
 
 
-play_book("/root/criar_ambiente_icp/hosts.yml","/root/criar_ambiente_icp/inventory")
+play_book("/root/create_icp_2103/hosts.yml","/root/create_icp_2103/inventory")
 docker_run("-e LICENSE=accept --net=host  -t -v /opt/ibm-cloud-private-ce-2.1.0.3/cluster:/installer/cluster ibmcom/icp-inception:2.1.0.3 install")
