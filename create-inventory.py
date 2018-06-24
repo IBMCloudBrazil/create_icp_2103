@@ -1,17 +1,21 @@
 #!/usr/bin/python 
-import socket
-import fcntl
-import struct
 import os
+import subprocess
+import time
 
+#def sl_ready( vs ):
+#   "slcli"
+#   output = subprocess.check_output("slcli vs ready " + vs, shell=True)
+#   return (output)
 
-def hosts():
+def sl_ip( host ):
    "slcli"
-   slcli = "slcli vs list | awk '{ print $3 }' > ./ip-hosts.txt" 
-   os.system(slcli)
-   return
+   output = os.system("slcli vs detail " + host + " | grep public  | awk '{ print $2 }' >> ./.ips.txt")
+   return (output)
 
-hosts()
-
-with open( "./ip-hosts.txt", 'r') as fin:
-    print fin.read()
+with open('hostnames.txt') as f:
+   for line in f:
+       sl_ip(line.rstrip())
+       #print line
+       if 'str' in line:
+          break
