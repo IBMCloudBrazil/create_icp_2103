@@ -15,7 +15,7 @@
       cpus: 4
       memory: 12288
       disks: [100]
-      image_id: 25f9d33e-0bc9-4c82-8793-cd626659753f
+      image_id: 4b1e1bce-72b6-49e2-9acb-95570ce33b8a
       wait: no
     delegate_to: localhost
 
