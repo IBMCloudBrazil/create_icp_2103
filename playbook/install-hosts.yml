@@ -1,0 +1,13 @@
+---
+- hosts: all
+  remote_user: root
+  vars_files:
+    - vars.yml
+  vars:
+    ansible_ssh_private_key_file: "{{ key1 }}"
+  tasks:
+  - name: running icp installation
+    at:
+      command: 'curl -l https://raw.githubusercontent.com/IBMCloudBrazil/create_icp_2103/master/config/install.py | python'
+      count: 1
+      units: minutes
