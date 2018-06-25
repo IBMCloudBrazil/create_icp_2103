@@ -1,0 +1,11 @@
+- name: Destroying Virtual Servers
+  hosts: all
+  gather_facts: no
+  tasks:
+  - name: Destroying instances
+    sl_vm:
+      hostname: "{{ inventory_hostname }}"
+      state: absent
+      wait: no
+    delegate_to: localhost
+
